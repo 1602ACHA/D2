@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script>
+        document.documentElement.style.fontSize = window.innerWidth / 750 * 100 + "px";
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <span class="iconfont icon icon-chevron-thin-left"></span>
+            <span>无连接</span>
+            <span class="iconfont icon icon-shouqi-01"></span>
+        </header>
+        <nav>
+            <dl>
+                <dt class="iconfont icon icon-guangpan active"></dt>
+                <dd>电源</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon icon-bianji1"></dt>
+                <dd>首页</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon icon-quanbudingdan-01"></dt>
+                <dd>菜单</dd>
+            </dl>
+            <dl>
+                <dt class="iconfont icon icon-tongjitu111"></dt>
+                <dd>截屏</dd>
+            </dl>
+        </nav>
+        <main>
+            <div class="swiper-container menu">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">电源</div>
+                    <div class="swiper-slide">首页</div>
+                    <div class="swiper-slide">菜单</div>
+                    <div class="swiper-slide">截屏</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="swiper.min.js"></script>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script>
+        var mySwiper = new Swiper('.menu', {
+            on: {
+                slideChangeTransitionStart: function() {
+                    var index = this.activeIndex;
+                    $('nav>dl').eq(index).children('dt').addClass('active').end().siblings().children('dt').removeClass('active');
+                }
+            }
+        })
+        $('nav>dl').on('click', function() {
+            $(this).children('dt').addClass('active').end().siblings().children('dt').removeClass('active');
+            mySwiper.slideTo($(this).index());
+        })
+    </script>
+</body>
+
+</html>
